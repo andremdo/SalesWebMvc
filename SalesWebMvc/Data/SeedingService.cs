@@ -9,15 +9,15 @@ namespace SalesWebMvc.Data
 {
     public class SeedingService
     {
-        private SalesWebMvcContext Context;
+        private SalesWebMvcContext _context;
 
         public SeedingService(SalesWebMvcContext context)
         {
-            Context = context;
+            _context = context;
         }
         public void Seed()
         {
-            if (Context.Department.Any() || Context.Seller.Any() || Context.SalesRecord.Any())
+            if (_context.Department.Any() || _context.Seller.Any() || _context.SalesRecord.Any())
             {
                 return; // DB has been seeded.
             }
@@ -64,15 +64,15 @@ namespace SalesWebMvc.Data
             SalesRecord r29 = new SalesRecord(29, new DateTime(2018, 10, 23), 12000.0, SaleStatus.Billed, s5);
             SalesRecord r30 = new SalesRecord(30, new DateTime(2018, 10, 12), 5000.0, SaleStatus.Billed, s2);
 
-            Context.Department.AddRange(d1, d2, d3, d4);
+            _context.Department.AddRange(d1, d2, d3, d4);
 
-            Context.Seller.AddRange(s1, s2, s3, s4, s5, s6);
+            _context.Seller.AddRange(s1, s2, s3, s4, s5, s6);
 
-            Context.SalesRecord.AddRange(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10,
+            _context.SalesRecord.AddRange(r1, r2, r3, r4, r5, r6, r7, r8, r9, r10,
                 r11, r12, r13, r14, r15, r16, r17, r18, r19, r20,
                 r21, r22, r23, r24, r25, r26, r27, r28, r29, r30);
 
-            Context.SaveChanges();
+            _context.SaveChanges();
         }
     }
 }
